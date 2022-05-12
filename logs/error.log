@@ -1,0 +1,1 @@
+2022/05/11 23:47:19 [error] 10100#26552: *1 CreateFile() "C:\CodeThings\MolData\Server/html/favicon.ico" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "127.0.0.1", referrer: "http://127.0.0.1/"
