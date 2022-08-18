@@ -21,3 +21,5 @@
 127.0.0.1 - - [13/Aug/2022:20:31:28 +0100] "GET / HTTP/1.1" 200 1236 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36"
 127.0.0.1 - - [13/Aug/2022:20:31:28 +0100] "GET /master.css HTTP/1.1" 200 1435 "http://localhost/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36"
 127.0.0.1 - - [13/Aug/2022:20:31:32 +0100] "GET /search.php?molname=amidol HTTP/1.1" 302 231 "http://localhost/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36"
+127.0.0.1 - - [13/Aug/2022:21:04:39 +0100] "GET / HTTP/1.1" 200 1236 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36"
+127.0.0.1 - - [13/Aug/2022:21:04:40 +0100] "GET /master.css HTTP/1.1" 200 1435 "http://localhost/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36"
