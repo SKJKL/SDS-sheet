@@ -1,0 +1,5 @@
+logs/
+temp/
+contrib/
+conf/
+!nginx.conf
