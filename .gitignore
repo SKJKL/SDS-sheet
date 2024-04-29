@@ -2,4 +2,8 @@ logs/
 temp/
 contrib/
 conf/
+vendor/
+EDIT-THIS*
+composer.*
+sds.pdf
 !nginx.conf

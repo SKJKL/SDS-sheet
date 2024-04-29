@@ -12,8 +12,11 @@ html {
 
 header,
 section,
-nav {
+nav,
+footer {
 	display: block;
+	max-width: 900px;
+	margin: 0 auto;
 }
 
 .small-tip {
@@ -26,37 +29,27 @@ nav {
  *	Header + Navigaiton
  */
 
-
-#wrapper {
-	max-width: 900px;
-	margin: 0 auto;
+header {
+	background-color: #aadcee;
 }
 
-#content {
-	padding: 20px 0;
+header > h1 {
+	padding: 10px;
 }
 
-
-/************************************************************************
- *	Header + Navigaiton
- */
-
-
-#title {
-	padding: 20px 0;
-	font-size: 18px;
-	font-weight: 300;
+nav {
+	padding: 0px;
 }
 
-header ul {
+nav ul {
 	background: #eee;
 }
 
-header li {
+nav li {
 	display: inline-block;
 }
 
-header li a {
+nav li a {
 	display: inline-block;
 	padding: .5em 1em;
 	text-decoration: none;
@@ -72,37 +65,28 @@ header li a {
  *	Content
  */
 
-
-#content a {
-	color: #1d7afc;
+section {
+	padding: 15px;
 }
 
-#content p,
-#content ul,
-#content ol,
-#content table,
-#content h1,
-#content h2,
-#content h3 {
-	margin: 1em 0;
+section > :is(p, h1, h2) {
+	margin-bottom: 10px;
 }
 
-#content > *:first-child {
-	margin-top: 0;
+#home {
+	background-color: #cddce1;
 }
 
-#content h1 {
-	font-weight: normal;
+#results {
+	background-color: #e3d7bd;
 }
-
-
 /************************************************************************
- *	Footer
+*	Footer
  */
 
-
+ 
 footer {
-	margin: 3em 0 1em;
-	padding: 20px 0;
+	background-color: #63d1f6;
 	border-top: 1px solid #ddd;
+	padding: 15px;
 }
