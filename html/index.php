@@ -1,6 +1,6 @@
 <?php session_start(); ?>
 <!DOCTYPE html>
-<html lang="de" class="page-<?=str_replace("/", "-", $subView)?>">
+<html lang="en">
 <head>
 	<meta charset="utf-8">
 	<title>MolData</title>
@@ -9,6 +9,9 @@
 	<meta name="format-detection" content="telephone=no">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<link rel="stylesheet" type="text/css" href="master.css" media="screen">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 	<link rel="shortcut icon" href="favicon.ico" />
 	<!-- <script charset="utf-8" type="text/javascript" src="js/master.js"></script> -->
 </head>

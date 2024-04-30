@@ -6,4 +6,5 @@ vendor/
 EDIT-THIS*
 composer.*
 sds.pdf
+logs/
 !nginx.conf

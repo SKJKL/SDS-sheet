@@ -6,7 +6,7 @@
 
 html {
 	background: #fff;
-	font: 13px Arial, sans-serif;
+	font: 14px "PT Sans", Arial, sans-serif;
 	color: #000;
 }
 
@@ -55,10 +55,7 @@ nav li a {
 	text-decoration: none;
 }
 
-.page-home .nav-home a,
-.page-kontakt .nav-kontakt a {
-	background: #ddd;
-}
+
 
 
 /************************************************************************
@@ -77,9 +74,67 @@ section > :is(p, h1, h2) {
 	background-color: #cddce1;
 }
 
+#key-info {
+	background-color: #d5df97;
+}
+
+.key-grid {
+	display: grid;
+	min-height: 100px;
+	gap: 10px;
+	grid-template-areas: 
+	/*1*/ "A A A A A"
+	/*2*/ "B B B X X"
+	/*3*/ "S S S X X"
+	/*4*/ "C F W X X"
+	/*5*/ "E E E X X"
+	/*6*/ "H H H X X"
+	/*7*/ "H H H X X";
+	grid-template-rows: repeat(5, auto) 2fr;
+	grid-template-columns: repeat(3, 1fr) 4fr;
+}
+
+.grid-div h4 {
+	background-color: #426119;
+	color: white;
+	padding: 4px;
+}
+.grid-div p {
+	background-color: #c0df97;
+	padding: 10px;
+	white-space: pre-line;
+}
+.grid-div hr {
+	border: solid 3px #203307;
+}
+
+.grid-div :is(h4, p, hr) {
+	box-shadow: 5px 5px 1px grey;
+}
+
+.grid-name { grid-area: A; }
+.grid-name > p {
+	font-size: 2em;
+}
+.grid-syn { grid-area: B; }
+.grid-sds { grid-area: S; }
+.grid-cas { grid-area: C; }
+.grid-mw { grid-area: W; }
+.grid-hazards { grid-area: H; }
+.grid-formula { grid-area: F; }
+.grid-fire { grid-area: E; }
+.grid-props { grid-area: X; }
+
+
 #results {
 	background-color: #e3d7bd;
 }
+
+#whole-text {
+	background-color: #f0c7a7;
+	font-size: 10px;
+}
+
 /************************************************************************
 *	Footer
  */
