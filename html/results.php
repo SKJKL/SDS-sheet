@@ -1,6 +1,10 @@
 <?php
 // Save file
-file_put_contents("sds.pdf", file_get_contents($_SESSION["sds"]));
+// try {
+// 	file_put_contents("sds.pdf", file_get_contents($_SESSION["sds"]));
+// } catch (\Throwable $th) {
+// 	header("Location: /" . "/CodeThings/MolData/html" . "/?status=failed");
+// }
 
 // Parse file
 include("../vendor/autoload.php");
@@ -12,12 +16,12 @@ $text = preg_replace("/.*Page[\s|\S]*?(?:Canada)/", "", $raw);
 $text = preg_replace("/\n+\s*\n/", "\n", $text);
 
 // Regexes
-$rgx_hazards = "/Hazard Statement.*\n\KH(?:.*\n)*?(?=Precautionary Statements(?:.*\n)*?Reduced Labeling)/m";
+$rgx_hazards = "/\n\bHazard.*?\n\K[\s\S]*?(?=Precau)/";
 $rgx_mw = "/Molecular weight\D*\K\d.*(?= g\/mol)/";
 $rgx_cas = "/CAS-No\D*\K[\d-]*(?=\D)/";
 $rgx_formula = "/Formula\W*\K[\w-]*(?=\W)/";
-$rgx_fire = "/Suitable extinguishing media\W*\K(?:.*\s)*?(?=5\.3 Advice)/";
-$rgx_props = "/Information on basic physical and chemical properties\W*\K(?:.*\s)*?(?=SECTION 10)/";
+$rgx_fire = "/SECTION 5[\s\S]*?5\.1[\s\S]*?\n\K[\s\S]*(?=5\.3 Advice)/";
+$rgx_props = "/Information on basic physical and chemical properties\W*\K(?:.*\s)*?(?=9\.2 Other)/";
 $rgx_name = "/Product name.*\n\K(?:.*\s)*?(?=Product)/";
 $rgx_syn = "/Synonyms.*:\s\K[\S\s]*?(?=Formula)/";
 
@@ -66,24 +70,29 @@ $rgx_info = array(
 <?php
 foreach ($rgx_info as $key=>$values):
 	preg_match($values[1], $text, $info);
-	$raw_info = $info[0];
+	$match = $info[0];
+	// $info[0] = trim($info[0]);
 	if ($key == 'props') {
-		$info[0] = preg_replace("/\n(?!([a-z]\)))/", "<b>$1</b>", $info[0]);
-		$info[0] = preg_replace("/(?:^|\n)\K([a-z]\))/", "<b>$1</b>", $info[0]);
+		$match = preg_replace("/\n(?!([a-z]\)))/", "", $match);
+		$match = preg_replace("/(^|\n)[a-z]\)(.*)/", "<li>$1$2</li>", $match);
 	}
-	if ($key == 'formula') $info[0] = preg_replace("/([^\d])(\d)/", "$1<sub>$2</sub>", $info[0]);
-	if ($key == 'mw') $info[0] = $info[0] . " g/mol";
+	if ($key == 'formula') $match = preg_replace("/([^\d])(\d+)/", "$1<sub>$2</sub>", $match);
+	if ($key == 'mw') $match = $match . " g/mol";
 	if ($key == 'fire') {
-		$info[0] = preg_replace("/([\S\s]*)(?:Unsuitable extinguishing media\s*)([\S\s]*)(?:5\.2.*\s*)([\S\s]*)/", "<b>Suitable:</b> $1\n<b>Unsuitable:</b> $2\n<b>Special hazards:</b> $3", $info[0]);
-		$info[0] = preg_replace("/\n\b/", "", $info[0]);
+		$match = preg_replace("/([\S\s]*?)(?:Unsuitable extinguishing media\s*([\S\s]*))?(?:5\.2.*or mixture\s*)([\S\s]*)/", "<b>Suitable:</b> $1\n<b>Unsuitable:</b> $2\n<b>Special hazards:</b> $3", $match);
+		$match = preg_replace("/\n{2,}/", "\n", $match);
 	}
 ?>
 	<br>
 	<h4><?= $values[0] ?></h4>
-	<pre class="<?= $key ?>"><?= $raw_info ?></pre>
+	<pre class="<?= $key ?>"><?= $info[0] ?></pre>
 	<script>
-		console.log(<?= json_encode($info[0]) ?>);
-		var for_summary = <?= json_encode("<h4>" . $values[0] . "</h4><hr><p>" . $info[0] . "</p>") ?>;
+		console.log(<?= json_encode($match) ?>);
+		if (<?= json_encode($key) ?> == 'props') {
+			var for_summary = <?= json_encode("<h4>" . $values[0] . "</h4><hr><ol type=a>" . $match . "</ol>") ?>;
+		} else {
+			var for_summary = <?= json_encode("<h4>" . $values[0] . "</h4><hr><p>" . $match . "</p>") ?>;
+		}
 		document.getElementsByClassName("grid-"+<?= json_encode($key) ?>)[0].innerHTML = for_summary;
 	</script>
 <?php endforeach; ?>
@@ -118,5 +127,6 @@ echo $raw;
 	// Open in new tab
 	let sds = <?= json_encode($_SESSION["sds"], JSON_HEX_TAG) ?>;
 	console.log(sds);
+
 	// window.open(sds);
 </script>

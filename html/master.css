@@ -55,7 +55,10 @@ nav li a {
 	text-decoration: none;
 }
 
-
+h1 a {
+	text-decoration: none;
+	color: green;
+}
 
 
 /************************************************************************
@@ -78,20 +81,42 @@ section > :is(p, h1, h2) {
 	background-color: #d5df97;
 }
 
-.key-grid {
-	display: grid;
-	min-height: 100px;
-	gap: 10px;
-	grid-template-areas: 
-	/*1*/ "A A A A A"
-	/*2*/ "B B B X X"
-	/*3*/ "S S S X X"
-	/*4*/ "C F W X X"
-	/*5*/ "E E E X X"
-	/*6*/ "H H H X X"
-	/*7*/ "H H H X X";
-	grid-template-rows: repeat(5, auto) 2fr;
-	grid-template-columns: repeat(3, 1fr) 4fr;
+@media (min-width: 500px) {
+	.key-grid {
+		display: grid;
+		min-height: 100px;
+		gap: 10px;
+		grid-template-areas: 
+		/*1*/ "A A A A A"
+		/*2*/ "B B B X X"
+		/*3*/ "S S S X X"
+		/*4*/ "C F W X X"
+		/*5*/ "E E E X X"
+		/*6*/ "H H H X X"
+		/*7*/ "H H H X X";
+		grid-template-rows: repeat(5, auto) 2fr;
+		grid-template-columns: repeat(3, 1fr) 4fr;
+	}
+}
+@media (max-width: 500px) {
+	.key-grid {
+		display: grid;
+		width: 100%;
+		/* min-height: 100px; */
+		gap: 10px;
+		grid-template-areas: 
+		/*1*/ "A"
+		/*2*/ "B"
+		/*3*/ "S"
+		/*4*/ "C"
+		/*5*/ "F"
+		/*6*/ "E"
+		/*7*/ "W"
+		/*8*/ "H"
+		/*9*/ "X";
+		/* grid-template-rows: repeat(5, auto) 2fr; */
+		/* grid-template-columns: repeat(3, 1fr) 4fr; */
+	}
 }
 
 .grid-div h4 {
@@ -104,11 +129,20 @@ section > :is(p, h1, h2) {
 	padding: 10px;
 	white-space: pre-line;
 }
+.grid-div ol {
+	padding: 10px;
+	padding-left: 25px;
+	background-color: #c0df97;
+}
+ol > li::marker {
+	font-weight: bold;
+}
+
 .grid-div hr {
 	border: solid 3px #203307;
 }
 
-.grid-div :is(h4, p, hr) {
+.grid-div :is(h4, p, hr, ol) {
 	box-shadow: 5px 5px 1px grey;
 }
 

@@ -6,5 +6,6 @@ vendor/
 EDIT-THIS*
 composer.*
 sds.pdf
-logs/
+notes.txt
+tasklist
 !nginx.conf

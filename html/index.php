@@ -8,21 +8,22 @@
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="format-detection" content="telephone=no">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<!-- <base href="html"> -->
 	<link rel="stylesheet" type="text/css" href="master.css" media="screen">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-	<link rel="shortcut icon" href="favicon.ico" />
+	<!-- <link rel="shortcut icon" href="favicon.ico" /> -->
 	<!-- <script charset="utf-8" type="text/javascript" src="js/master.js"></script> -->
 </head>
 
 <body>
 <header>
-	<h1>MolData Search</h1>
+	<h1><a href="/">MolData Search</a></h1>
 	<nav>
 		<ul>
 			<li class="nav-home"><a href="/">Home</a></li>
-			<li class="nav-kontakt"><a href="/kontakt">Another tab</a></li>
+			<li class="nav-kontakt"><a href="/phpinfo.php">PHP info</a></li>
 		</ul>
 	</nav>
 </header>
@@ -33,7 +34,7 @@
 	<p class="small-tip">E.g. glucose, benzene, ethyl acetate, doxorubicin hydrochloride</p>
 
 	<form action="search.php">
-		<input type="text" placeholder="Search.." name="molname" />
+		<input type="text" placeholder="Search.." name="molname" id=search />
 		<input type="submit" />
 	</form>
 </section>
@@ -41,11 +42,19 @@
 <?php
 if (isset($_GET["status"]) && $_GET["status"] == "success") {
 	require("results.php");
-	
-}
+} elseif (isset($_GET["status"]) && $_GET["status"] == "failed") {
 ?>
+<section id=results>
+	<h3>Not found</h3>
+	<p>Couldn't find SDS sheet</p>
+	<p class="small-tip"><?= $_SESSION["throw"] ?></p>
+</section>
+<?php } ?>
 
 <footer>&copy; Footer</footer>
 
+<script>
+	document.getElementById("search").focus();
+</script>
 </body>
 </html>
