@@ -13,10 +13,23 @@ html {
 header,
 section,
 nav,
-footer {
+footer,
+#image-cont {
 	display: block;
 	max-width: 900px;
 	margin: 0 auto;
+}
+
+#image-cont {
+	background-color: #426119;
+	padding: 15px;
+	
+}
+
+#image {
+	display: block;
+	margin: 0 auto;
+	max-height: 400px;
 }
 
 .small-tip {
@@ -57,8 +70,19 @@ nav li a {
 
 h1 a {
 	text-decoration: none;
-	color: green;
+	color: navy;
 }
+
+
+/************************************************************************
+ *	Search box
+ */
+
+/* #search-box {
+	background: linear-gradient(to top, #da70f566 0%, #00a1ff80 100%), 
+	linear-gradient(to right, #a570f566 0%, #00a1ff80 100%), 
+	linear-gradient(to bottom right, #70e6f5ff 0%, #00a1ffff 100%);
+} */
 
 
 /************************************************************************
@@ -173,6 +197,9 @@ ol > li::marker {
 *	Footer
  */
 
+#color {
+	background-color: gainsboro;
+}
  
 footer {
 	background-color: #63d1f6;
