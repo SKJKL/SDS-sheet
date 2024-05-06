@@ -29,22 +29,31 @@
 </header>
 
 <div id="image-cont">
-	<img id="image" src="bannerimg.jpg" />
-</div>
+	<div id="welcome-box" class="banner-div">
+		<h2>Welcome to MolData search</h2>
+	</div>
 
-<section id=home>
-	<h2>Welcome to MolData search</h2>
-	<p>Type a chemical in the search box to get its safety data sheet.</p>
-	<div id="search-box">
+	<img id="image" src="bannerimg.jpg" />
+	
+	<div id="search-box" class="banner-div">
+		<p><b>Type a chemical in the search box to get its safety data sheet.</b></p>
 		<p class="small-tip">E.g. glucose, benzene, ethyl acetate, doxorubicin hydrochloride</p>
 	
 		<form action="search.php">
-			<input type="text" placeholder="Search.." name="molname" id=search />
-			<input type="submit" />
+			<input type="text" placeholder="Search..." name="molname" id=search />
+			<!-- <input type="submit" id="submit" /> -->
+			<button id="search-button">
+				<svg id="search-icon" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7">
+					<g fill="none">
+						<path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"/>
+						<circle cx="8" cy="8" r="7"/>
+					</g>
+				</svg>
+			</button>
 		</form>
-
+		
 	</div>
-</section>
+</div>
 
 <?php
 if (isset($_GET["status"]) && $_GET["status"] == "success") {
@@ -67,7 +76,17 @@ if (isset($_GET["status"]) && $_GET["status"] == "success") {
 
 <script>
 	document.getElementById("search").focus();
+
+	// Prevent form submission
+    const form = document.querySelector('form');
+	form.addEventListener("submit", function(event) {
+		if (document.getElementById("search").value.trim() === '') {
+			event.preventDefault();
+			console.log("Text input is empty. Form submission prevented.");
+		}
+	});
 	
+	// Color palette
 	const colorThief = new ColorThief();
 	const img = document.getElementById("image");
 	image.addEventListener('load', function() {
@@ -79,7 +98,6 @@ if (isset($_GET["status"]) && $_GET["status"] == "success") {
 
 		const rgbaMain = 'rgba('+colorMain[0]+','+colorMain[1]+','+colorMain[2]+', 1)';
 		document.getElementById("image-cont").setAttribute("style", "background-color: "+rgbaMain);
-
 
 		var colDivMain = document.createElement("div");
 		colDivMain.setAttribute("style", "background-color: "+rgbaMain+"; height: 40px; width: 40px; display: block;");

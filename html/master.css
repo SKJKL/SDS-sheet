@@ -4,6 +4,10 @@
 	padding: 0;
 }
 
+:root {
+	--dark: 76, 84, 80;
+}
+
 html {
 	background: #fff;
 	font: 14px "PT Sans", Arial, sans-serif;
@@ -23,7 +27,8 @@ footer,
 #image-cont {
 	background-color: #426119;
 	padding: 15px;
-	
+	position: relative;
+	text-align: center;
 }
 
 #image {
@@ -78,13 +83,90 @@ h1 a {
  *	Search box
  */
 
-/* #search-box {
-	background: linear-gradient(to top, #da70f566 0%, #00a1ff80 100%), 
+.banner-div {
+	display: inline-block;
+	position: absolute;
+	left: 50%;
+    transform: translateX(-50%);
+	padding: 10px 20px;
+	border-radius: 10px;
+
+	
+	/* background: linear-gradient(to top, #da70f566 0%, #00a1ff80 100%), 
 	linear-gradient(to right, #a570f566 0%, #00a1ff80 100%), 
-	linear-gradient(to bottom right, #70e6f5ff 0%, #00a1ffff 100%);
-} */
+	linear-gradient(to bottom right, #70e6f5ff 0%, #00a1ffff 100%); */
+}
 
 
+#welcome-box {
+	top: 5%;
+	background-color: rgba(18, 7, 39, 0.7);
+	color: white;
+}
+
+#search-box {
+	bottom: 5%;
+	background-color: rgba(76, 84, 80, 0.85);
+	box-shadow: 5px 5px 1px rgba(48, 50, 49, 0.8);
+	
+}
+#search-box > p:first-child {
+	color: white;
+}
+#search-box > p:nth-child(2) {
+	color: rgba(255, 255, 255, 0.812);
+	text-align: left;
+}
+
+#search {
+	border: solid 3px rgba(46, 52, 49, 0.9);
+	background-color: rgba(228, 239, 233, 0.3);
+	box-shadow: inset 2px 2px 1px #777;
+	padding: 3px;
+	font-family: Consolas, monospace;
+	color: white;
+}
+#search:focus {
+	outline: rgb(203, 152, 92) 2px solid;
+}
+#search:hover {
+	background-color: rgba(203, 152, 92, 0.6);
+	outline: rgb(203, 152, 92) 2px solid;
+}
+#search::placeholder {
+	color: rgb(221, 221, 221);
+}
+#search-icon {
+	height: 23px;
+	width: 30px;
+	stroke-width: 2px;
+	stroke: rgba(46, 52, 49, 0.9);
+	display: block;
+	margin: 4px;
+}
+#search-button {
+	background-color: rgba(228, 239, 233, 0.3);
+	border: solid 3px rgba(46, 52, 49, 0.9);
+}
+#search-button:hover{
+	cursor: pointer;
+	background-color: rgba(203, 152, 92, 0.6);
+}
+#search-button:focus{
+	outline: rgb(203, 152, 92) 2px solid;
+}
+form {
+	padding: 8px 20px;
+	background-color: rgba(76, 84, 80, 0.85);
+	display: inline-block;
+	border-radius: 8px;
+	margin: 10px auto 8px;
+	box-shadow: 5px 5px 1px rgba(48, 50, 49, 0.8);
+
+}
+form > * {
+	vertical-align: middle;
+}
 /************************************************************************
  *	Content
  */
